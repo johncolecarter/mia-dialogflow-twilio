@@ -2,7 +2,6 @@ const dialogflow = require('@google-cloud/dialogflow');
 const { request } = require('express');
 const uuid = require('uuid');
 const axios = require('axios');
-const { CpsContext } = require('twilio/lib/rest/preview/trusted_comms/cps');
 
 /**
  * Send a query to the dialogflow agent, and return the query result.
@@ -45,23 +44,24 @@ async function runSample(projectId = 'project-mia-260217') {
     } else {
         console.log(`  No intent matched.`);
     }
+    // console.log(result)
 
-    axios.get(`http://localhost:3000/api/v1/community/98fb8529-7a06-4398-961d-7696b872bb82/intent/${result.intent.displayName}/response`).then(response => {
-        let array = response.data.communityIntentUsesGlobalIntentResponse;
+    // axios.get(`http://localhost:3000/api/v1/community/98fb8529-7a06-4398-961d-7696b872bb82/intent/${result.intent.displayName}/response`).then(response => {
+    //     let array = response.data.communityIntentUsesGlobalIntentResponse;
 
-        let newArray = [];
+    //     let newArray = [];
 
-        for (let i = 0; i < array.length; i++) {
-            let active = array[i].is_active
+    //     for (let i = 0; i < array.length; i++) {
+    //         let active = array[i].is_active
 
-            if (active === 1) {
-                newArray.push(array[i])
-            }
-        }
+    //         if (active === 1) {
+    //             newArray.push(array[i])
+    //         }
+    //     }
 
-        console.log(newArray[getRandomInt(newArray.length)].response_text)
+    //     console.log(newArray[getRandomInt(newArray.length)].response_text)
 
-    })
+    // })
 }
 
 runSample()

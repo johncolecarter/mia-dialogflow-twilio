@@ -43,7 +43,7 @@ app.post('/sms', (req, res) => {
         // Send request and log result
         const responses = await sessionClient.detectIntent(request);
         console.log('Detected intent');
-        console.log(responses)
+        // console.log(responses)
         const result = responses[0].queryResult;
         console.log(`  Query: ${result.queryText}`);
         console.log(`  Response: ${result.fulfillmentText}`);
