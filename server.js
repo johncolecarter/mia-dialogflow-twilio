@@ -71,10 +71,14 @@ app.post('/sms', (req, res) => {
 
             console.log(data)
 
-            twiml.message(data);
+            const textResponse = new MessagingResponse();
+            const message = textResponse.message();
+            message.body(data);
+            // message.media('https://demo.twilio.com/owl.png');
 
             res.writeHead(200, { 'Content-Type': 'text/xml' });
-            res.end(twiml.toString());
+            res.end(textResponse.toString());
+
 
         })
     }
