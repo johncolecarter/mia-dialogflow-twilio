@@ -53,7 +53,6 @@ app.post('/sms', (req, res) => {
             console.log(`  No intent matched.`);
         }
 
-
         axios.get(`http://localhost:3000/api/v1/community/98fb8529-7a06-4398-961d-7696b872bb82/intent/${result.intent.displayName}/response`).then(response => {
             let array = response.data.communityIntentUsesGlobalIntentResponse;
 
