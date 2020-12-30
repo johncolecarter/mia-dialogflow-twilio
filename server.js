@@ -6,6 +6,7 @@ const axios = require('axios');
 const dialogflow = require('@google-cloud/dialogflow');
 const uuid = require('uuid');
 
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,7 +16,6 @@ function getRandomInt(max) {
 }
 
 app.post('/sms', (req, res) => {
-    const twiml = new MessagingResponse();
 
     let text = req.body.Body;
 

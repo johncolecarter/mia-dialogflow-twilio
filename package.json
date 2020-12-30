@@ -19,8 +19,13 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
+    "imagemin": "^7.0.1",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.1",
     "ngrok": "^3.3.0",
     "nodemon": "^2.0.6",
+    "tinify": "^1.6.0-beta.2",
     "twilio": "^3.53.0",
     "uuid": "^8.3.2",
     "ws": "^7.4.0"

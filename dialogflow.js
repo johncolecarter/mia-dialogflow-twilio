@@ -26,7 +26,7 @@ async function runSample(projectId = 'project-mia-260217') {
         queryInput: {
             text: {
                 // The query to send to the dialogflow agent
-                text: 'hot tub',
+                text: 'tell me a joke',
                 // The language used by the client (en-US)
                 languageCode: 'en-US',
             },
@@ -108,37 +108,12 @@ async function runSample(projectId = 'project-mia-260217') {
                     console.log(data[maxNumber].card.imageUri)
                     console.log(data[data.length - 1].text.text[0])
                 }
-                // else {
-                //     console.log(data[data.length - 1].text)
-                //     console.log(data[data.length - 1].text.text[0])
-                // }
             }
         })
     } catch (err) {
         console.log(err)
+        console.log(result.fulfillmentText)
     }
-
-    // responseId: responses[0].responseId,
-    // session: request.session,
-    // queryResult: responses[0].queryResult,
-    // originalDetectIntentRequest: {}
-
-    // axios.get(`http://localhost:3000/api/v1/community/98fb8529-7a06-4398-961d-7696b872bb82/intent/${result.intent.displayName}/response`).then(response => {
-    //     let array = response.data.communityIntentUsesGlobalIntentResponse;
-
-    //     let newArray = [];
-
-    //     for (let i = 0; i < array.length; i++) {
-    //         let active = array[i].is_active
-
-    //         if (active === 1) {
-    //             newArray.push(array[i])
-    //         }
-    //     }
-
-    //     console.log(newArray[getRandomInt(newArray.length)].response_text)
-
-    // })
 }
 
 runSample()

@@ -15,7 +15,6 @@ function getRandomInt(max) {
 }
 
 app.post('/sms', (req, res) => {
-    // const twiml = new MessagingResponse();
 
     let text = req.body.Body;
 
@@ -42,16 +41,8 @@ app.post('/sms', (req, res) => {
 
         // Send request and log result
         const responses = await sessionClient.detectIntent(request);
-        console.log('Detected intent');
-        // console.log(responses)
+
         const result = responses[0].queryResult;
-        console.log(`  Query: ${result.queryText}`);
-        console.log(`  Response: ${result.fulfillmentText}`);
-        if (result.intent) {
-            console.log(`  Intent: ${result.intent.displayName}`);
-        } else {
-            console.log(`  No intent matched.`);
-        }
 
         headers = {
             "Cashe-Control": "no cache",
@@ -117,7 +108,9 @@ app.post('/sms', (req, res) => {
 
                     res.writeHead(200, { 'Content-Type': 'text/xml' });
                     res.end(textResponse.toString());
+
                 } else {
+
                     imagesMaxNumber = data.length - 2
                     maxNumber = getRandomInt(imagesMaxNumber)
 
@@ -153,6 +146,16 @@ app.post('/sms', (req, res) => {
             })
         } catch (err) {
             console.log(err)
+            console.log(result.fulfillmentText)
+
+            textMessage = result.fulfillmentText;
+
+            const textResponse = new MessagingResponse();
+            const message = textResponse.message();
+            message.body(textMessage);
+
+            res.writeHead(200, { 'Content-Type': 'text/xml' });
+            res.end(textResponse.toString());
         }
     }
 
